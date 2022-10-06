@@ -14,6 +14,9 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, confusion_matrix
 
+import warnings 
+warnings.filterwarnings("ignore")
+
 # %matplotlib inline
 
 # Reading the train.csv by removing the last column since it's an empty column

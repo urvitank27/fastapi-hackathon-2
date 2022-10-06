@@ -109,7 +109,7 @@ def predictDisease(symptoms):
     return diseasePrecaution(nb_prediction)
 
 
-print(predictDisease("Depression, irritability"))
+#print(predictDisease("Depression, irritability"))
 #print(predictDisease("Shivering,Chills"))
 #print(predictDisease("Neck Pain,Dizziness"))
 #print(predictDisease("Chest Pain,Dizziness,Headache"))

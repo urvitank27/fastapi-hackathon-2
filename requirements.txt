@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+gunicorn
+requests
+pandas
+googletrans==3.1.0a0
+rake-nltk
+nltk
+seaborn
+sklearn

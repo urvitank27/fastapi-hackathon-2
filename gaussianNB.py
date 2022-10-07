@@ -109,8 +109,8 @@ def predictDisease(symptoms):
     # generating individual outputs
     nb_prediction = data_dict["predictions_classes"][final_nb_model.predict(input_data)[0]]
     
-    return diseasePrecaution(nb_prediction)
-
+    #return diseasePrecaution(nb_prediction)
+    return nb_prediction
 
 #print(predictDisease("Depression, irritability"))
 #print(predictDisease("Shivering,Chills"))

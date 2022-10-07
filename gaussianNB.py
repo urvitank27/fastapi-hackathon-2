@@ -122,7 +122,21 @@ def predictDisease(symptoms):
     # generating individual outputs
     nb_prediction = data_dict["predictions_classes"][final_nb_model.predict(input_data)[0]]
     
-    return diseasePrecaution(nb_prediction)
+    desc_df = pd.read_csv("symptoms-dataset/symptom_Description.csv")
+    lst = desc_df[desc_df["Disease"] == nb_prediction.capitalize()]
+    lst = [*lst["Description"].values]
+
+    precaution_df = pd.read_csv("symptoms-dataset/symptom_precaution.csv")
+    prec = precaution_df[precaution_df["Disease"] == nb_prediction.capitalize()]
+    temp = prec.drop(columns = "Disease")
+            
+    prec_lst = [*temp["Precaution_1"].values, *temp["Precaution_2"].values, *temp["Precaution_3"].values, *temp["Precaution_4"].values]
+    prec_lst = [0 if n != n else n for n in prec_lst]
+    prec_lst = [n for n in prec_lst if n != 0]
+
+    return {"desc":nb_prediction,"precaution":prec_lst}
+    
+    #return diseasePrecaution(nb_prediction)
     #return getDescription(nb_prediction)
     #, nb_prediction
 

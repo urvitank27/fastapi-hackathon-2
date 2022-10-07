@@ -80,9 +80,8 @@ def getDescription(disease) :
         return {"desc":"None"}
     
 def diseasePrecaution(disease) :
-
     desc_df = pd.read_csv("symptoms-dataset/symptom_Description.csv")
-    lst = desc_df[desc_df["Disease"] == disease]
+    lst = desc_df[desc_df["Disease"] == disease.capitalize()]
     lst = [*lst["Description"].values]
     #print(lst)
     if lst :
@@ -90,7 +89,7 @@ def diseasePrecaution(disease) :
             precaution_df = pd.read_csv("symptoms-dataset/symptom_precaution.csv")
             prec = precaution_df[precaution_df["Disease"] == disease.capitalize()]
             temp = prec.drop(columns = "Disease")
-
+            
             prec_lst = [*temp["Precaution_1"].values, *temp["Precaution_2"].values, *temp["Precaution_3"].values, *temp["Precaution_4"].values]
             prec_lst = [0 if n != n else n for n in prec_lst]
             prec_lst = [n for n in prec_lst if n != 0]
@@ -134,6 +133,7 @@ def predictDisease(symptoms):
     prec_lst = [0 if n != n else n for n in prec_lst]
     prec_lst = [n for n in prec_lst if n != 0]
 
+    #print(prec_lst)
     return {"desc":nb_prediction,"precaution":prec_lst}
     
     #return diseasePrecaution(nb_prediction)

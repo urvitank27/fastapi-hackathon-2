@@ -88,7 +88,7 @@ def diseasePrecaution(disease) :
     if lst :
         try :
             precaution_df = pd.read_csv("symptoms-dataset/symptom_precaution.csv")
-            prec = precaution_df[precaution_df["Disease"] == disease.title()]
+            prec = precaution_df[precaution_df["Disease"] == disease.capitalize()]
             temp = prec.drop(columns = "Disease")
 
             prec_lst = [*temp["Precaution_1"].values, *temp["Precaution_2"].values, *temp["Precaution_3"].values, *temp["Precaution_4"].values]

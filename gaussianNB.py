@@ -72,6 +72,13 @@ data_dict = {
     "predictions_classes":encoder.classes_
 }
 
+def getDescription(disease) :
+    desc_df = pd.read_csv("symptoms-dataset/symptom_Description.csv")
+    if disease in desc_df["Disease"] :
+        return {"desc":desc_df["Description"].values}
+    else :
+        return {"desc":"None"}
+    
 def diseasePrecaution(disease) :
     disease_dtls = {}
     
@@ -110,7 +117,8 @@ def predictDisease(symptoms):
     nb_prediction = data_dict["predictions_classes"][final_nb_model.predict(input_data)[0]]
     
     #return diseasePrecaution(nb_prediction)
-    return nb_prediction
+    return getDescription(nb_prediction)
+    #, nb_prediction
 
 #print(predictDisease("Depression, irritability"))
 #print(predictDisease("Shivering,Chills"))

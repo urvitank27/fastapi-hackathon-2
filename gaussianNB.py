@@ -101,8 +101,8 @@ def diseasePrecaution(disease) :
 
     
 def predictDisease(symptoms):
-    
-    if diseasePrecaution(symptoms) :
+    if symptoms == "" : return {"desc":"No Query Passed."}
+    elif diseasePrecaution(symptoms) :
         return diseasePrecaution(symptoms)
     
     symptoms = symptoms.split(",")
